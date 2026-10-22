@@ -409,7 +409,7 @@ export default function App() {
           {player && (
             <InventoryPanel 
               inventory={player.inventory} 
-              onUseItem={handleUseItem} 
+              
             />
           )}
           

@@ -11,8 +11,8 @@
 <h2>🛠️ Technologies</h2>
 
 <ul>
-  <li><strong>React</strong> — Frontend user interface and interactive gameplay.</li>
-  <li><strong>Python</strong> — Backend logic, game systems, and AI integration.</li>
+  <li><strong>React</strong> - Frontend user interface and interactive gameplay.</li>
+  <li><strong>Python</strong> - Backend logic, game systems, and AI integration.</li>
   <li><strong>Large Language Models (LLMs)</strong> — Dynamic dialogue and narrative generation.</li>
 </ul>
 
