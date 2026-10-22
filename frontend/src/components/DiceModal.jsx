@@ -57,7 +57,7 @@ export default function DiceModal({
                 ? "bg-[#00ff9f]/20 border border-[#00ff9f] text-[#00ff9f] shadow-[0_0_15px_rgba(0,255,159,0.5)]" 
                 : "bg-[#ff0055]/20 border border-[#ff0055] text-[#ff0055] shadow-[0_0_15px_rgba(255,0,85,0.5)]"
             }`}>
-              {rollData.success ? "✅ CHECK PASSED" : "💀 CHECK FAILED"}
+              {rollData.success ? "✅ WIN" : "💀 LOST"}
             </div>
 
             <button

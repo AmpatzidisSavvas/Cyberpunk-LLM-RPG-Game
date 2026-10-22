@@ -5,7 +5,7 @@ export default function ClassSelectionScreen({ classesData, loadingClasses, onSe
     <div className="relative min-h-screen bg-[#080811] text-[#00ff9f] p-4 md:p-8 flex flex-col items-center justify-center font-mono selection:bg-[#ff0055] selection:text-white">
       <div className="z-20 max-w-4xl w-full border border-[#00f3ff]/40 bg-[#0d0f1d]/90 p-8 rounded-xl shadow-[0_0_30px_rgba(0,243,255,0.12)]">
         <h1 className="text-3xl font-extrabold text-center tracking-widest text-[#00f3ff] mb-2 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
-          NEO_THESSALONIKI_STORIES
+          THESSALONIKI_2099
         </h1>
         <p className="text-center text-xs text-[#00ff9f]/70 mb-8 tracking-widest uppercase">
           Select an operative archetype to synchronize neural link

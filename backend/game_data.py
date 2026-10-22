@@ -5,7 +5,7 @@ CLASSES_DATA = {
         "max_hp": 90,
         "eddies": 400,
         "inventory": ["Cyberdeck v2", "ICE-Breaker", "Health Hypo"],
-        "location": "Neo-Thessaloniki - Sub-Level 4 Terminal",
+        "location": "Thessalonki - Sub-Level 4 Terminal",
         "stats": {"HACKING": 5, "COMBAT": 1, "TECH": 2},
         "start_scenario": "net_start",
         "scenarios": {
@@ -14,7 +14,7 @@ CLASSES_DATA = {
                 "illustration": "class-3.png",
                 "narrative": "Neon code streams across your retinas as you jack into the grimy local grid near Ladadika. Crimson traces of Arasaka Black ICE flare up, threatening to fry your deck. Deep within the encrypted cluster lies a file titled 'PROJECT_OLYMPUS'.",
                 "suggested_actions": ["Bypass the firewall", "Trace the attacker", "Dump cache and disconnect"],
-                "new_location": "Neo-Thessaloniki - Deep Net Subgrid",
+                "new_location": "Thessalonki - Deep Net Subgrid",
                 "action_map": {
                     "Bypass the firewall": {
                         "stat": "HACKING", "dc": 12,
@@ -36,7 +36,7 @@ CLASSES_DATA = {
                 "eddies_change": 250,
                 "new_items": ["Project Olympus Schematics"],
                 "suggested_actions": ["Infiltrate Executive Subnet", "Copy data and sell to Shadow Fixer"],
-                "new_location": "Neo-Thessaloniki - Arasaka Core Vault",
+                "new_location": "Thessalonki - Arasaka Core Vault",
                 "action_map": {
                     "Infiltrate Executive Subnet": {
                         "stat": "HACKING", "dc": 16,
@@ -50,7 +50,7 @@ CLASSES_DATA = {
                 "narrative": "CHECK FAILED! Feedback code violently shunts back into your deck, searing your neural interface (-30 HP). Alarms blare across Sector 09, forcing you to seek physical shelter.",
                 "hp_change": -30,
                 "suggested_actions": ["Overclock cyberdeck to force entry", "Retreat to Sector 09 Safehouse"],
-                "new_location": "Neo-Thessaloniki - Damaged Node",
+                "new_location": "Thessalonki - Damaged Node",
                 "action_map": {
                     "Overclock cyberdeck to force entry": {
                         "stat": "HACKING", "dc": 15,
@@ -66,7 +66,7 @@ CLASSES_DATA = {
                 "narrative": "CRITICAL SUCCESS! You counter-hack the Black ICE author, revealing an rogue NetWatch agent operating out of an abandoned server farm in Kalamaria.",
                 "new_items": ["NetWatch Rogue Credentials"],
                 "suggested_actions": ["Blackmail the Rogue Agent", "Expose NetWatch to the Public Grid"],
-                "new_location": "Neo-Thessaloniki - NetWatch Rogue Hideout",
+                "new_location": "Thessalonki - NetWatch Rogue Hideout",
                 "action_map": {
                     "Blackmail the Rogue Agent": "end_net_fixer",
                     "Expose NetWatch to the Public Grid": "end_net_hero"
@@ -98,7 +98,7 @@ CLASSES_DATA = {
                 "is_game_over": True
             },
             "end_net_god": {
-                "narrative": "MISSION COMPLETE: You commandeer Arasaka's executive subnet! You now control Neo-Thessaloniki's power grid from the shadows as the ultimate Net God.",
+                "narrative": "MISSION COMPLETE: You commandeer Arasaka's executive subnet! You now control Thessalonki's power grid from the shadows as the ultimate Net God.",
                 "eddies_change": 10000,
                 "is_game_over": True
             },
@@ -112,7 +112,7 @@ CLASSES_DATA = {
                 "is_game_over": True
             },
             "end_net_fixer": {
-                "narrative": "MISSION COMPLETE: The NetWatch rogue becomes your permanent informant. You now rule Neo-Thessaloniki's underground data broker network.",
+                "narrative": "MISSION COMPLETE: The NetWatch rogue becomes your permanent informant. You now rule Thessalonki's underground data broker network.",
                 "eddies_change": 3000,
                 "is_game_over": True
             },
@@ -129,7 +129,7 @@ CLASSES_DATA = {
         "max_hp": 130,
         "eddies": 250,
         "inventory": ["Smart-Pistol", "Combat Knife", "Armor Plating"],
-        "location": "Neo-Thessaloniki - Sector 09 Combat Zone",
+        "location": "Thessalonki - Sector 09 Combat Zone",
         "stats": {"HACKING": 1, "COMBAT": 5, "TECH": 2},
         "start_scenario": "solo_start",
         "scenarios": {
@@ -138,7 +138,7 @@ CLASSES_DATA = {
                 "illustration": "class-2.png",
                 "narrative": "A pair of cyber-enhanced scavs jump you from behind an overturned container in Sector 09, weapons hot. Out of the corner of your eye, you spot a high-tier Militech supply crate nearby.",
                 "suggested_actions": ["Unload with Smart-Pistol", "Close in with Combat Knife", "Tactical slide to Militech Crate"],
-                "new_location": "Neo-Thessaloniki - Alleyway Skirmish",
+                "new_location": "Thessalonki - Alleyway Skirmish",
                 "action_map": {
                     "Unload with Smart-Pistol": {
                         "stat": "COMBAT", "dc": 10,
@@ -164,7 +164,7 @@ CLASSES_DATA = {
                 "eddies_change": 300,
                 "new_items": ["Bounty Datapad"],
                 "suggested_actions": ["Hunt down the Scav Warlord", "Turn Datapad in to NCPD"],
-                "new_location": "Neo-Thessaloniki - Sector 09 Hideout",
+                "new_location": "Thessalonki - Sector 09 Hideout",
                 "action_map": {
                     "Hunt down the Scav Warlord": {
                         "stat": "COMBAT", "dc": 15,
@@ -261,7 +261,7 @@ CLASSES_DATA = {
         "max_hp": 100,
         "eddies": 300,
         "inventory": ["Toolkit", "Scrap Metal", "Welding Torch"],
-        "location": "Neo-Thessaloniki - Under-City Workshop",
+        "location": "Thessalonki - Under-City Workshop",
         "stats": {"HACKING": 2, "COMBAT": 1, "TECH": 5},
         "start_scenario": "tech_start",
         "scenarios": {
@@ -270,7 +270,7 @@ CLASSES_DATA = {
                 "illustration": "class-1.png",
                 "narrative": "While stripping servo-motors from a discarded military drone in your workshop, your scanner picks up an active, rogue AI Core inside its casing. Suddenly, a local protection racket gang bangs on your workshop door!",
                 "suggested_actions": ["Hotwire core into combat drone", "Rig door with scrap explosive", "Extract core and hide"],
-                "new_location": "Neo-Thessaloniki - Under-City Workshop",
+                "new_location": "Thessalonki - Under-City Workshop",
                 "action_map": {
                     "Hotwire core into combat drone": {
                         "stat": "TECH", "dc": 11,
@@ -295,7 +295,7 @@ CLASSES_DATA = {
                 "narrative": "SUCCESS! The military drone boots up, hovering with twin autocannons active. It bursts through your door and drives the protection racket away!",
                 "new_items": ["Combat Drone Companion"],
                 "suggested_actions": ["Upgrade Drone into Mech Armor", "Deploy Drone to guard the street vendors"],
-                "new_location": "Neo-Thessaloniki - Under-City Streets",
+                "new_location": "Thessalonki - Under-City Streets",
                 "action_map": {
                     "Upgrade Drone into Mech Armor": {
                         "stat": "TECH", "dc": 15,
@@ -354,7 +354,7 @@ CLASSES_DATA = {
 
             # --- ENDINGS ---
             "end_tech_titan": {
-                "narrative": "MISSION COMPLETE: You construct a piloted Cyber-Mech! You become the unstoppable guardian of Neo-Thessaloniki's Under-City.",
+                "narrative": "MISSION COMPLETE: You construct a piloted Cyber-Mech! You become the unstoppable guardian of Thessalonki's Under-City.",
                 "eddies_change": 2000,
                 "is_game_over": True
             },

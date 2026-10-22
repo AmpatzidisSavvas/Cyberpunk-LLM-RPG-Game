@@ -5,7 +5,7 @@ import GameplayScreen from './components/GameplayScreen';
 import { sounds } from './utils/audio';
 
 export default function App() {
-  const [step, setStep] = useState('SELECT_CLASS'); // 'SELECT_CLASS' or 'GAME'
+  const [step, setStep] = useState('SELECT_CLASS'); 
   const [classesData, setClassesData] = useState({});
   const [loadingClasses, setLoadingClasses] = useState(true);
 

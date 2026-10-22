@@ -2,7 +2,6 @@ import React from 'react';
 import HeaderHUD from './HeaderHUD';
 import TerminalLog from './TerminalLog';
 import ActionButtons from './ActionButtons';
-import ActionInput from './ActionInput';
 import OperativeSidebar from './OperativeSidebar';
 import DiceModal from './DiceModal';
 
@@ -14,11 +13,8 @@ export default function GameplayScreen({
   setCrtEnabled,
   isGameOver,
   suggestedActions,
-  input,
-  setInput,
   handleAction,
   onSwitchClass,
-  // Dice modal props
   rolling,
   rollData,
   rollFinished,
@@ -27,6 +23,7 @@ export default function GameplayScreen({
 }) {
   return (
     <div className="relative min-h-screen bg-[#080811] text-[#00ff9f] p-4 md:p-8 flex flex-col font-mono selection:bg-[#ff0055] selection:text-white">
+      
       {/* Dice Roll Modal */}
       <DiceModal 
         rolling={rolling}
