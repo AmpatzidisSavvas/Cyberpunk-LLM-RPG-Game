@@ -1,8 +1,10 @@
-import  React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+
 import ClassSelectionScreen from './components/ClassSelection';
 import GameplayScreen from './components/GameplayScreen';
 import { sounds } from './utils/audio';
+
 
 export default function App() {
   const [step, setStep] = useState('SELECT_CLASS'); 
@@ -16,6 +18,7 @@ export default function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [loading, setLoading] = useState(false);
   const [crtEnabled, setCrtEnabled] = useState(true);
+  const [audioEnabled, setAudioEnabled] = useState(true);
 
   // --- DICE ROLL MODAL STATE ---
   const [rolling, setRolling] = useState(false);
@@ -39,7 +42,7 @@ export default function App() {
 
   // 2. Start game session
   const handleSelectClass = async (roleName, info) => {
-    if (sounds?.playCyberHack) sounds.playCyberHack();
+    if (audioEnabled && sounds?.playCyberHack) sounds.playCyberHack();
 
     const selectedPlayer = {
       name: "V-2077",
@@ -92,7 +95,7 @@ export default function App() {
         clearInterval(interval);
         setAnimatedRollValue(rollInfo.d20_roll);
         setRollFinished(true);
-        if (sounds?.playCyberHack) sounds.playCyberHack();
+        if (audioEnabled && sounds?.playCyberHack) sounds.playCyberHack();
       }
     }, 70);
   };
@@ -144,7 +147,7 @@ export default function App() {
     const userAction = actionText || input;
     if (!userAction.trim() || loading || isGameOver) return;
 
-    if (sounds?.playCyberHack) sounds.playCyberHack();
+    if (audioEnabled && sounds?.playCyberHack) sounds.playCyberHack();
 
     const updatedLogs = [...logs, { sender: "PLAYER", text: userAction }];
     setLogs(updatedLogs);
@@ -194,35 +197,42 @@ export default function App() {
     }
   };
 
-  // Render Screen 1 or Screen 2 based on `step`
-  if (step === 'SELECT_CLASS') {
-    return (
-      <ClassSelectionScreen 
-        classesData={classesData} 
-        loadingClasses={loadingClasses} 
-        onSelectClass={handleSelectClass} 
-      />
-    );
-  }
-
   return (
-    <GameplayScreen 
-      player={player}
-      logs={logs}
-      loading={loading}
-      crtEnabled={crtEnabled}
-      setCrtEnabled={setCrtEnabled}
-      isGameOver={isGameOver}
-      suggestedActions={suggestedActions}
-      input={input}
-      setInput={setInput}
-      handleAction={handleAction}
-      onSwitchClass={() => setStep('SELECT_CLASS')}
-      rolling={rolling}
-      rollData={rollData}
-      rollFinished={rollFinished}
-      animatedRollValue={animatedRollValue}
-      handleCloseDiceModal={handleCloseDiceModal}
-    />
+    <div className="min-h-screen bg-[#080811] text-white relative overflow-x-hidden">
+      
+      {/* <MatrixBackground />
+      <HeaderNavbar /> */}
+
+      {/* Dynamic Main Screens */}
+      <main className="relative z-10">
+        {step === 'SELECT_CLASS' ? (
+          
+          <ClassSelectionScreen 
+            classesData={classesData} 
+            loadingClasses={loadingClasses} 
+            onSelectClass={handleSelectClass} 
+          />
+        ) : (
+          <GameplayScreen 
+            player={player}
+            logs={logs}
+            loading={loading}
+            crtEnabled={crtEnabled}
+            setCrtEnabled={setCrtEnabled}
+            isGameOver={isGameOver}
+            suggestedActions={suggestedActions}
+            input={input}
+            setInput={setInput}
+            handleAction={handleAction}
+            onSwitchClass={() => setStep('SELECT_CLASS')}
+            rolling={rolling}
+            rollData={rollData}
+            rollFinished={rollFinished}
+            animatedRollValue={animatedRollValue}
+            handleCloseDiceModal={handleCloseDiceModal}
+          />
+        )}
+      </main>
+    </div>
   );
 }

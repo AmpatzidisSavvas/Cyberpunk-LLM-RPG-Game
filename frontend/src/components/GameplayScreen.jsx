@@ -4,6 +4,7 @@ import TerminalLog from './TerminalLog';
 import ActionButtons from './ActionButtons';
 import OperativeSidebar from './OperativeSidebar';
 import DiceModal from './DiceModal';
+import MatrixBackground from './MatrixBackground'
 
 export default function GameplayScreen({
   player,
@@ -24,6 +25,7 @@ export default function GameplayScreen({
   return (
     <div className="relative min-h-screen bg-[#080811] text-[#00ff9f] p-4 md:p-8 flex flex-col font-mono selection:bg-[#ff0055] selection:text-white">
       
+      <MatrixBackground />
       {/* Dice Roll Modal */}
       <DiceModal 
         rolling={rolling}

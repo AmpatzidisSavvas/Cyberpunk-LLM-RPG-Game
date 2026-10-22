@@ -1,8 +1,10 @@
 import React from 'react';
+import MatrixBackground from './MatrixBackground';
 
 export default function ClassSelectionScreen({ classesData, loadingClasses, onSelectClass }) {
   return (
     <div className="relative min-h-screen bg-[#080811] text-[#00ff9f] p-4 md:p-8 flex flex-col items-center justify-center font-mono selection:bg-[#ff0055] selection:text-white">
+      <MatrixBackground />
       <div className="z-20 max-w-4xl w-full border border-[#00f3ff]/40 bg-[#0d0f1d]/90 p-8 rounded-xl shadow-[0_0_30px_rgba(0,243,255,0.12)]">
         <h1 className="text-3xl font-extrabold text-center tracking-widest text-[#00f3ff] mb-2 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
           THESSALONIKI_2099
