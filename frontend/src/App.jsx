@@ -202,8 +202,6 @@ export default function App() {
     }
   };
 
-  
-
   // --- SCREEN 1: CLASS SELECTION ---
   if (step === 'SELECT_CLASS') {
     return (
@@ -372,13 +370,44 @@ export default function App() {
           )}
         </div>
 
-        {/* Sidebar Inventory Section & Switch Class Button */}
+        {/* Sidebar Character Image & Inventory Section */}
         <div className="lg:col-span-1 flex flex-col gap-4">
           {player && (
-            <InventoryPanel 
-              inventory={player.inventory} 
-              
-            />
+            <>
+              {/* Character Illustration Card */}
+              <div className="border border-[#00f3ff]/30 bg-[#0d0f1d]/80 rounded-xl p-3 shadow-[0_0_25px_rgba(0,243,255,0.08)] flex flex-col items-center">
+                <div className="w-full text-center pb-2 mb-2 border-b border-[#00f3ff]/20">
+                  <span className="text-xs font-bold tracking-widest text-[#00f3ff] uppercase">
+                    [ OPERATIVE: {player.role.toUpperCase()} ]
+                  </span>
+                </div>
+                <div >
+                  <img 
+                    src={
+                      player.role === 'Netrunner' 
+                        ? '/img/class-3.png' 
+                        : player.role === 'Gunner' 
+                        ? '/img/class-2.png' 
+                        : '/img/class-1.png'
+                    } 
+                    alt={player.role}
+                    className="w-[200px] h-[200px] object-cover pixelated opacity-90 group-hover:opacity-100 transition-opacity"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="absolute inset-0 hidden items-center justify-center text-[10px] text-gray-500 italic">
+                    [NO IMAGE ASSET FOUND]
+                  </div>
+                </div>
+              </div>
+
+              {/* Inventory Panel */}
+              <InventoryPanel 
+                inventory={player.inventory} 
+              />
+            </>
           )}
           
           <button

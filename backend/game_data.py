@@ -11,7 +11,7 @@ CLASSES_DATA = {
         "scenarios": {
             # --- STAGE 1: THE GRID ENTRY ---
             "net_start": {
-                "illustration": "image_0.png",
+                "illustration": "class-3.png",
                 "narrative": "Neon code streams across your retinas as you jack into the grimy local grid near Ladadika. Crimson traces of Arasaka Black ICE flare up, threatening to fry your deck. Deep within the encrypted cluster lies a file titled 'PROJECT_OLYMPUS'.",
                 "suggested_actions": ["Bypass the firewall", "Trace the attacker", "Dump cache and disconnect"],
                 "new_location": "Neo-Thessaloniki - Deep Net Subgrid",
@@ -135,7 +135,7 @@ CLASSES_DATA = {
         "scenarios": {
             # --- STAGE 1: ALLEY AMBUSH ---
             "solo_start": {
-                "illustration": "image_1.png",
+                "illustration": "class-2.png",
                 "narrative": "A pair of cyber-enhanced scavs jump you from behind an overturned container in Sector 09, weapons hot. Out of the corner of your eye, you spot a high-tier Militech supply crate nearby.",
                 "suggested_actions": ["Unload with Smart-Pistol", "Close in with Combat Knife", "Tactical slide to Militech Crate"],
                 "new_location": "Neo-Thessaloniki - Alleyway Skirmish",
@@ -267,7 +267,7 @@ CLASSES_DATA = {
         "scenarios": {
             # --- STAGE 1: WORKSHOP DISCOVERY ---
             "tech_start": {
-                "illustration": "image_2.png",
+                "illustration": "class-1.png",
                 "narrative": "While stripping servo-motors from a discarded military drone in your workshop, your scanner picks up an active, rogue AI Core inside its casing. Suddenly, a local protection racket gang bangs on your workshop door!",
                 "suggested_actions": ["Hotwire core into combat drone", "Rig door with scrap explosive", "Extract core and hide"],
                 "new_location": "Neo-Thessaloniki - Under-City Workshop",
