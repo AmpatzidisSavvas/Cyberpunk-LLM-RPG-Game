@@ -37,8 +37,8 @@ export default function HeaderHUD({ player, crtEnabled, setCrtEnabled, useMock, 
         <div className="bg-[#080811] px-3 py-2 rounded-lg border border-yellow-500/40 flex items-center gap-2">
           <DollarSign className="text-yellow-400 shrink-0" size={18} />
           <div>
-            <div className="text-[10px] text-gray-400 uppercase leading-none">EDDIES</div>
-            <div className="font-bold text-yellow-400 text-sm">§{player.eddies}</div>
+            <div className="text-[10px] text-gray-400 uppercase leading-none">Money</div>
+            <div className="font-bold text-yellow-400 text-sm">{player.eddies}</div>
           </div>
         </div>
 
@@ -51,17 +51,7 @@ export default function HeaderHUD({ player, crtEnabled, setCrtEnabled, useMock, 
           </div>
         </div>
 
-        {/* Quick Toggles */}
-        <div className="flex gap-1 bg-[#080811] p-1 rounded-lg border border-[#00f3ff]/20 text-xs">
-          <button
-            onClick={() => setCrtEnabled(!crtEnabled)}
-            className={`px-2 py-1 rounded flex items-center gap-1 transition ${crtEnabled ? 'bg-[#00f3ff]/20 text-[#00f3ff]' : 'text-gray-500'}`}
-            title="Toggle CRT Effect"
-          >
-            <Sliders size={12} /> CRT
-          </button>
-          
-        </div>
+        
       </div>
     </header>
   );

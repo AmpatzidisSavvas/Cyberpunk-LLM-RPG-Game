@@ -202,39 +202,7 @@ export default function App() {
     }
   };
 
-  // 6. Handle using inventory items via backend API
-  const handleUseItem = async (itemName) => {
-    if (loading || isGameOver) return;
-    setLoading(true);
-
-    try {
-      const res = await axios.post('http://127.0.0.1:8000/api/use-item', {
-        ...player,
-        item_name: itemName
-      });
-
-      const data = res.data;
-
-      setLogs(prev => [...prev, { sender: "SYSTEM", text: data.narrative }]);
-
-      setPlayer(prev => {
-        let updatedInv = [...prev.inventory];
-        if (data.lost_items) updatedInv = updatedInv.filter(i => !data.lost_items.includes(i));
-        if (data.new_items) updatedInv.push(...data.new_items);
-
-        return {
-          ...prev,
-          hp: Math.min(prev.max_hp, Math.max(0, prev.hp + (data.hp_change || 0))),
-          eddies: Math.max(0, prev.eddies + (data.eddies_change || 0)),
-          inventory: updatedInv
-        };
-      });
-    } catch (err) {
-      setLogs(prev => [...prev, { sender: "SYSTEM", text: "ERROR: UNABLE TO USE ITEM." }]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  
 
   // --- SCREEN 1: CLASS SELECTION ---
   if (step === 'SELECT_CLASS') {
@@ -242,7 +210,7 @@ export default function App() {
       <div className="relative min-h-screen bg-[#080811] text-[#00ff9f] p-4 md:p-8 flex flex-col items-center justify-center font-mono selection:bg-[#ff0055] selection:text-white">
         <div className="z-20 max-w-4xl w-full border border-[#00f3ff]/40 bg-[#0d0f1d]/90 p-8 rounded-xl shadow-[0_0_30px_rgba(0,243,255,0.12)]">
           <h1 className="text-3xl font-extrabold text-center tracking-widest text-[#00f3ff] mb-2 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
-            NEO_THESSALONIK_GRID // OPERATIVE CREATION
+            NEO_THESSALONIKI_STORIES
           </h1>
           <p className="text-center text-xs text-[#00ff9f]/70 mb-8 tracking-widest uppercase">
             Select an operative archetype to synchronize neural link
@@ -274,7 +242,7 @@ export default function App() {
                     </p>
                     <div className="text-xs space-y-1 text-[#00ff9f]/80 mb-4 bg-[#0d0f1d] p-3 rounded border border-[#00f3ff]/10">
                       <div>❤️ HP: {info.hp}/{info.max_hp}</div>
-                      <div>§ EDDIES: {info.eddies}</div>
+                      <div>💵 Money: {info.eddies}</div>
                       <div className="truncate">🎒 GEAR: {info.inventory.join(', ')}</div>
                     </div>
                   </div>

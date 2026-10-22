@@ -2,7 +2,7 @@ import React from 'react';
 import { Package, Heart, Crosshair } from 'lucide-react';
 
 
-export default function InventoryPanel({ inventory, setPlayer }) {
+export default function InventoryPanel({ inventory }) {
   
 
 
