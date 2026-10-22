@@ -1,33 +1,40 @@
-Cyberpunk LLM RPG Game
+# Cyberpunk LLM RPG Game
 
-Cyberpunk LLM RPG Game is an interactive role-playing game inspired by the cyberpunk genre, built with React and Python. The project combines a futuristic cyberpunk setting with Large Language Models (LLMs) to create an immersive, dynamic storytelling experience where players can explore a dystopian world, interact with characters, and shape their own adventures through their choices.
+<p>
+  <strong>Cyberpunk LLM RPG Game</strong> is an interactive role-playing game inspired by the cyberpunk genre, built with <strong>React</strong> and <strong>Python</strong>. The project combines a futuristic cyberpunk setting with Large Language Models (LLMs) to create an immersive, dynamic storytelling experience where players can explore a dystopian world, interact with characters, and shape their own adventures through their choices.
+</p>
 
-The game aims to blend traditional RPG mechanics with AI-powered narrative generation, offering a flexible foundation for interactive storytelling, character interactions, and branching storylines.
+<p>
+  The game aims to blend traditional RPG mechanics with AI-powered narrative generation, offering a flexible foundation for interactive storytelling, character interactions, and branching storylines.
+</p>
 
-🛠️ Technologies
+<h2>🛠️ Technologies</h2>
 
-React — Frontend user interface and interactive gameplay.
+<ul>
+  <li><strong>React</strong> — Frontend user interface and interactive gameplay.</li>
+  <li><strong>Python</strong> — Backend logic, game systems, and AI integration.</li>
+  <li><strong>Large Language Models (LLMs)</strong> — Dynamic dialogue and narrative generation.</li>
+</ul>
 
-Python — Backend logic, game systems, and AI integration.
+<h2>🎮 Features</h2>
 
-Large Language Models (LLMs) — Dynamic dialogue and narrative generation.
+<ul>
+  <li>Cyberpunk-inspired world and atmosphere.</li>
+  <li>Interactive, text-based role-playing gameplay.</li>
+  <li>AI-powered storytelling and character interactions.</li>
+  <li>Player-driven decisions and narrative possibilities.</li>
+  <li>React-based frontend with a Python backend.</li>
+</ul>
 
-🎮 Features
+<h2>🚀 Project Goal</h2>
 
-Cyberpunk-inspired world and atmosphere.
+<p>
+  The goal of this project is to explore the integration of Large Language Models into RPG game development, creating a more immersive and adaptable gaming experience where player choices influence the story.
+</p>
 
-Interactive, text-based role-playing gameplay.
+<h2>📌 Project Status</h2>
 
-AI-powered storytelling and character interactions.
+<p>
+  🚧 This project is currently under development. More features and improvements may be added over time.
+</p>
 
-Player-driven decisions and narrative possibilities.
-
-React-based frontend with a Python backend.
-
-🚀 Project Goal
-
-The goal of this project is to explore the integration of Large Language Models into RPG game development, creating a more immersive and adaptable gaming experience where player choices influence the story.
-
-📌 Status
-
-This project is under development. More features and improvements may be added over time.
