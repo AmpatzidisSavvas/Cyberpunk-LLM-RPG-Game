@@ -4,8 +4,6 @@
   <strong>Cyberpunk LLM RPG Game</strong> is an interactive role-playing game inspired by the cyberpunk genre, built with <strong>React</strong> and <strong>Python</strong>. The project combines a futuristic cyberpunk setting with Large Language Models (LLMs) to create an immersive, dynamic storytelling experience where players can explore a dystopian world, interact with characters, and shape their own adventures through their choices.
 </p>
 
-<video src="./frontend/public/video/Recording.webm" controls width="100%" autoplay muted loop></video>
-
 <p>
   The game aims to blend traditional RPG mechanics with AI-powered narrative generation, offering a flexible foundation for interactive storytelling, character interactions, and branching storylines.
 </p>
