@@ -12,17 +12,16 @@ export default function ClassSelectionScreen({
       <MatrixBackground />
       <div className="z-20 max-w-4xl w-full border border-[#00f3ff]/40 bg-[#0d0f1d]/90 p-8 rounded-xl shadow-[0_0_30px_rgba(0,243,255,0.12)]">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-4">
-          <div className="flex items-center gap-3">
-            <Cpu className="text-[#00f3ff] w-7 h-7 animate-pulse" />
+          <div className="flex items-center gap-2">
+            <img className=" w-7 h-7 animate-pulse"  src="/img/favicon.svg"  alt="Tower logo" />
             <div>
-              <h1 className="text-xl md:text-3xl font-bold tracking-wider text-white flex items-center gap-1">
+              <h1 className="text-xl md:text-3xl font-bold tracking-wider text-white flex items-center gap-1 ">
                 THESSALONIKI <span className="text-[#00f3ff]">2099</span>
               </h1>
-              
             </div>
           </div>
         </div>
-        <p className="text-center text-xs text-[#00ff9f]/70 mb-8 tracking-widest uppercase">
+        <p className="text-center text-xs text-[#00ff9f]/70 mt-3 mb-8 tracking-widest uppercase">
           Select a character to synchronize neural link
         </p> 
 
