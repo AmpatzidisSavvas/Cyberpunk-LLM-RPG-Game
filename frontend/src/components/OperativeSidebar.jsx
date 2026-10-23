@@ -17,6 +17,13 @@ export default function OperativeSidebar({ player, onSwitchClass }) {
 
   return (
     <div className="lg:col-span-1 flex flex-col gap-4">
+      {/* Switch Class Button */}
+      <button
+        onClick={onSwitchClass}
+        className="w-full border border-[#ff0055]/50 bg-[#ff0055]/10 hover:bg-[#ff0055] hover:text-black text-[#ff0055] text-xs font-bold py-2 rounded transition-all tracking-wider"
+      >
+        ← SWITCH OPERATIVE CLASS
+      </button>
       {/* Character Illustration Card */}
       <div className="border border-[#00f3ff]/30 bg-[#0d0f1d]/80 rounded-xl p-3 shadow-[0_0_25px_rgba(0,243,255,0.08)] flex flex-col items-center">
         <div className="w-full text-center pb-2 mb-2 border-b border-[#00f3ff]/20">
@@ -45,13 +52,7 @@ export default function OperativeSidebar({ player, onSwitchClass }) {
       {/* Inventory Panel */}
       <InventoryPanel inventory={player.inventory} />
 
-      {/* Switch Class Button */}
-      <button
-        onClick={onSwitchClass}
-        className="w-full border border-[#ff0055]/50 bg-[#ff0055]/10 hover:bg-[#ff0055] hover:text-black text-[#ff0055] text-xs font-bold py-2 rounded transition-all tracking-wider"
-      >
-        ← SWITCH OPERATIVE CLASS
-      </button>
+      
     </div>
   );
 }

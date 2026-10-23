@@ -17,12 +17,12 @@ CLASSES_DATA = {
                 "new_location": "Thessaloniki - Deep Net Subgrid",
                 "action_map": {
                     "Bypass the firewall": {
-                        "stat": "HACKING", "dc": 12,
+                        "stat": "HACKING", "dc": 12, "faction": "corporates",
                         "success": "net_firewall_win",
                         "fail": "net_firewall_fail"
                     },
                     "Trace the attacker": {
-                        "stat": "HACKING", "dc": 14,
+                        "stat": "HACKING", "dc": 14, "faction": "law_enforcement",
                         "success": "net_trace_win",
                         "fail": "net_trace_fail"
                     },
@@ -34,17 +34,18 @@ CLASSES_DATA = {
             "net_firewall_win": {
                 "narrative": "CRITICAL SUCCESS! Your ICE-Breaker tears through the Arasaka firewall. You breach the core vault housed inside the ancient Rotunda Data Sanctuary and discover 'PROJECT_OLYMPUS' contains military neural-parasite schematics.",
                 "eddies_change": 250,
+                "reputation_change": {"corporates": -20, "underground": 10},
                 "new_items": ["Project Olympus Schematics"],
                 "suggested_actions": ["Infiltrate Executive Subnet at Aristotelous Plaza", "Route data to White Tower Array", "Copy data and sell to Shadow Fixer"],
                 "new_location": "Thessaloniki - Rotunda Data Vault",
                 "action_map": {
                     "Infiltrate Executive Subnet at Aristotelous Plaza": {
-                        "stat": "HACKING", "dc": 16,
+                        "stat": "HACKING", "dc": 16, "faction": "corporates",
                         "success": "end_net_god",
                         "fail": "net_exec_trap"
                     },
                     "Route data to White Tower Array": {
-                        "stat": "HACKING", "dc": 13,
+                        "stat": "HACKING", "dc": 13, "faction": "corporates",
                         "success": "net_citadel_broadcast",
                         "fail": "net_citadel_fail"
                     },
@@ -58,7 +59,7 @@ CLASSES_DATA = {
                 "new_location": "Thessaloniki - Kamara Damaged Node",
                 "action_map": {
                     "Overclock cyberdeck to force entry": {
-                        "stat": "HACKING", "dc": 15,
+                        "stat": "HACKING", "dc": 15, "faction": "corporates",
                         "success": "net_firewall_win",
                         "fail": "end_flatline"
                     },
@@ -69,6 +70,7 @@ CLASSES_DATA = {
             # --- STAGE 2: BRANCH B (ATTACKER TRACE) ---
             "net_trace_win": {
                 "narrative": "CRITICAL SUCCESS! You counter-hack the Black ICE author, revealing a rogue NetWatch agent operating out of the abandoned transmitter sub-levels of the OTE Tower.",
+                "reputation_change": {"law_enforcement": -15, "underground": 15},
                 "new_items": ["NetWatch Rogue Credentials"],
                 "suggested_actions": ["Blackmail the Rogue Agent", "Expose NetWatch to the Public Grid", "Hijack OTE Transmitter Beam"],
                 "new_location": "Thessaloniki - OTE Tower Relay Station",
@@ -76,7 +78,7 @@ CLASSES_DATA = {
                     "Blackmail the Rogue Agent": "end_net_fixer",
                     "Expose NetWatch to the Public Grid": "end_net_hero",
                     "Hijack OTE Transmitter Beam": {
-                        "stat": "HACKING", "dc": 15,
+                        "stat": "HACKING", "dc": 15, "faction": "law_enforcement",
                         "success": "end_net_god",
                         "fail": "net_exec_trap"
                     }
@@ -85,6 +87,7 @@ CLASSES_DATA = {
             "net_trace_fail": {
                 "narrative": "CHECK FAILED! The attacker was waiting for your trace! A NetWatch ping locks onto your physical cyberdeck location near the Thermaikos waterfront.",
                 "hp_change": -20,
+                "reputation_change": {"law_enforcement": 10},
                 "suggested_actions": ["Jack out immediately"],
                 "action_map": {
                     "Jack out immediately": "end_net_captured"
@@ -95,6 +98,7 @@ CLASSES_DATA = {
             "net_citadel_broadcast": {
                 "narrative": "SUCCESS! You hijack the high-frequency transmitter on top of the heavily armored White Citadel. Cybernetic holograms project 'PROJECT_OLYMPUS' files across the sky over the Thermaikos Gulf.",
                 "eddies_change": 1500,
+                "reputation_change": {"corporates": -30, "underground": 25},
                 "new_items": ["White Citadel Root Access"],
                 "suggested_actions": ["Demand Ransom from Arasaka Execs", "Broadcast to Underground Resistance"],
                 "new_location": "Thessaloniki - White Citadel Tower",
@@ -104,7 +108,7 @@ CLASSES_DATA = {
                 }
             },
             "net_citadel_fail": {
-                "narrative": "CHECK FAILED! The White Citadel's auto-defenses detect your intrusion vector and unleash lethal lethal neural feedback.",
+                "narrative": "CHECK FAILED! The White Citadel's auto-defenses detect your intrusion vector and unleash lethal neural feedback.",
                 "hp_change": -50,
                 "suggested_actions": ["Emergency Disconnect"],
                 "action_map": {
@@ -116,6 +120,7 @@ CLASSES_DATA = {
             "net_exec_trap": {
                 "narrative": "FAIL! Arasaka's executive counter-daemons at Aristotelous Plaza purge your cyberdeck storage and lock your neural buffer. You barely disconnect before brain death.",
                 "hp_change": -40,
+                "reputation_change": {"corporates": 10},
                 "lost_items": ["Project Olympus Schematics"],
                 "is_game_over": True
             },
@@ -129,26 +134,31 @@ CLASSES_DATA = {
                 "is_game_over": True
             },
             "end_net_god": {
-                "narrative": "MISSION COMPLETE: You commandeer Arasaka's executive subnet at Aristotelous Plaza! You now control Thessalonki's entire automated power grid and sky-defense from the shadows as the ultimate Net God.",
+                "narrative": "MISSION COMPLETE: You commandeer Arasaka's executive subnet at Aristotelous Plaza! You now control Thessaloniki's entire automated power grid and sky-defense from the shadows as the ultimate Net God.",
                 "eddies_change": 10000,
+                "reputation_change": {"corporates": -50, "underground": 50},
                 "is_game_over": True
             },
             "end_net_rich": {
                 "narrative": "MISSION COMPLETE: A Shadow Fixer operating out of the Ano Poli sky-villas buys the schematics for a fortune. You wire 5,000 Eddies to your account and retire off-grid.",
                 "eddies_change": 5000,
+                "reputation_change": {"underground": 20},
                 "is_game_over": True
             },
             "end_net_hero": {
                 "narrative": "MISSION COMPLETE: You broadcast NetWatch corruption across every holoscreen in Aristotelous Square. You become a folk hero in Thessaloniki's digital underground.",
+                "reputation_change": {"law_enforcement": -60, "underground": 50},
                 "is_game_over": True
             },
             "end_net_fixer": {
                 "narrative": "MISSION COMPLETE: The NetWatch rogue becomes your permanent informant. You now rule Thessaloniki's underground data broker network from OTE Tower.",
                 "eddies_change": 3000,
+                "reputation_change": {"law_enforcement": -30, "underground": 30},
                 "is_game_over": True
             },
             "end_net_captured": {
                 "narrative": "MISSION COMPLETE (FAILED): A NetWatch strike team raids your location by the harbor. You spend the rest of your life in a high-security cyber-prison in the Aegean.",
+                "reputation_change": {"law_enforcement": 40},
                 "is_game_over": True
             }
         }
@@ -172,17 +182,17 @@ CLASSES_DATA = {
                 "new_location": "Thessaloniki - Kamara Underdeck Alley",
                 "action_map": {
                     "Unload with Smart-Pistol": {
-                        "stat": "COMBAT", "dc": 10,
+                        "stat": "COMBAT", "dc": 10, "faction": "underground",
                         "success": "solo_gun_win",
                         "fail": "solo_gun_fail"
                     },
                     "Close in with Combat Knife": {
-                        "stat": "COMBAT", "dc": 14,
+                        "stat": "COMBAT", "dc": 14, "faction": "underground",
                         "success": "solo_knife_win",
                         "fail": "solo_knife_fail"
                     },
                     "Tactical slide to Militech Crate": {
-                        "stat": "COMBAT", "dc": 12,
+                        "stat": "COMBAT", "dc": 12, "faction": "corporates",
                         "success": "solo_crate_win",
                         "fail": "solo_crate_fail"
                     }
@@ -193,18 +203,19 @@ CLASSES_DATA = {
             "solo_gun_win": {
                 "narrative": "TARGET ELIMINATED! Your smart-bullets home in and drop both scavs instantly onto the wet pavement. On one body, you find an encrypted bounty datapad listing a $2,000 hit on a local warlord hiding in Ano Poli.",
                 "eddies_change": 300,
+                "reputation_change": {"underground": -15, "law_enforcement": 10},
                 "new_items": ["Bounty Datapad"],
                 "suggested_actions": ["Assault Scav Stronghold in Ano Poli", "Turn Datapad in to NCPD at Aristotelous Plaza", "Infiltrate Helexpo Black Market"],
                 "new_location": "Thessaloniki - Kamara Perimeter",
                 "action_map": {
                     "Assault Scav Stronghold in Ano Poli": {
-                        "stat": "COMBAT", "dc": 15,
+                        "stat": "COMBAT", "dc": 15, "faction": "underground",
                         "success": "end_solo_warlord",
                         "fail": "end_solo_overwhelmed"
                     },
                     "Turn Datapad in to NCPD at Aristotelous Plaza": "end_solo_bounty",
                     "Infiltrate Helexpo Black Market": {
-                        "stat": "COMBAT", "dc": 13,
+                        "stat": "COMBAT", "dc": 13, "faction": "underground",
                         "success": "solo_helexpo_raid",
                         "fail": "end_solo_overwhelmed"
                     }
@@ -213,10 +224,11 @@ CLASSES_DATA = {
             "solo_gun_fail": {
                 "narrative": "CHECK FAILED! A localized EMP jammer glitches your smart-pistol targeting. You take heavy crossfire (-40 HP) before diving behind a concrete pillar.",
                 "hp_change": -40,
+                "reputation_change": {"underground": 10},
                 "suggested_actions": ["Draw Combat Knife for final stand", "Retreat into the Sub-Level Catacombs"],
                 "action_map": {
                     "Draw Combat Knife for final stand": {
-                        "stat": "COMBAT", "dc": 13,
+                        "stat": "COMBAT", "dc": 13, "faction": "underground",
                         "success": "solo_knife_win",
                         "fail": "end_solo_overwhelmed"
                     },
@@ -227,13 +239,14 @@ CLASSES_DATA = {
             # --- STAGE 2: BRANCH B (TACTICAL CRATE) ---
             "solo_crate_win": {
                 "narrative": "TACTICAL SUCCESS! You slide past gunfire, breach the Militech crate with your boot, and pull out a prototype Heavy Plasma Cannon!",
+                "reputation_change": {"corporates": -15, "underground": 10},
                 "new_items": ["Prototype Plasma Cannon"],
                 "suggested_actions": ["Annihilate the ambush squad", "Sell cannon to street gang at Ladadika", "Storm the White Citadel Armory"],
                 "action_map": {
                     "Annihilate the ambush squad": "end_solo_merc_legend",
                     "Sell cannon to street gang at Ladadika": "end_solo_arms_dealer",
                     "Storm the White Citadel Armory": {
-                        "stat": "COMBAT", "dc": 16,
+                        "stat": "COMBAT", "dc": 16, "faction": "corporates",
                         "success": "end_solo_citadel_conqueror",
                         "fail": "end_solo_overwhelmed"
                     }
@@ -253,6 +266,7 @@ CLASSES_DATA = {
             "solo_knife_win": {
                 "narrative": "CRITICAL HIT! You close the distance, driving your knife straight into the scav leader's cybernetic neck joint before disarming his squadmate.",
                 "eddies_change": 500,
+                "reputation_change": {"underground": -20},
                 "new_items": ["Custom Cyberware Core"],
                 "suggested_actions": ["Claim Upper Ano Poli Territory"],
                 "action_map": {
@@ -269,6 +283,7 @@ CLASSES_DATA = {
             "solo_helexpo_raid": {
                 "narrative": "SUCCESS! You breach the illegal arms exhibition at the Helexpo Grounds, taking down corporate arms dealers and seizing an experimental gunship prototype.",
                 "eddies_change": 2500,
+                "reputation_change": {"corporates": -30, "underground": 20},
                 "new_items": ["Militech Gunship Keys"],
                 "suggested_actions": ["Rule the City Skies", "Sell Gunship to Syndicate"],
                 "new_location": "Thessaloniki - Helexpo Cyber Grounds",
@@ -282,25 +297,30 @@ CLASSES_DATA = {
             "end_solo_warlord": {
                 "narrative": "MISSION COMPLETE: You storm the Scav stronghold overlooking the city in ancient Ano Poli, eliminate the boss, and take control of Thessaloniki's mercenary underworld.",
                 "eddies_change": 4000,
+                "reputation_change": {"underground": 40},
                 "is_game_over": True
             },
             "end_solo_bounty": {
                 "narrative": "MISSION COMPLETE: NCPD headquarters at Aristotelous Plaza transfers 2,000 Eddies to your account. You restock top-tier ammo for your next contract.",
                 "eddies_change": 2000,
+                "reputation_change": {"law_enforcement": 30, "underground": -10},
                 "is_game_over": True
             },
             "end_solo_merc_legend": {
                 "narrative": "MISSION COMPLETE: You obliterate the scav squad with the plasma cannon. Your display of sheer force makes you a feared mercenary legend across all sectors.",
+                "reputation_change": {"underground": 30, "corporates": -10},
                 "is_game_over": True
             },
             "end_solo_citadel_conqueror": {
                 "narrative": "MISSION COMPLETE: You breach and seize the corporate guard hub at the White Citadel! Corporate security surrenders control of the coastline to you.",
                 "eddies_change": 8000,
+                "reputation_change": {"corporates": -60, "underground": 40},
                 "is_game_over": True
             },
             "end_solo_arms_dealer": {
                 "narrative": "MISSION COMPLETE: You fence the Militech technology for 6,000 Eddies on the Ladadika black market and retire from street combat.",
                 "eddies_change": 6000,
+                "reputation_change": {"underground": 25},
                 "is_game_over": True
             },
             "end_solo_overwhelmed": {
@@ -309,6 +329,7 @@ CLASSES_DATA = {
             },
             "end_solo_coward": {
                 "narrative": "MISSION COMPLETE: You crawl into the subterranean catacombs, surviving the fight but losing all your street reputation.",
+                "reputation_change": {"underground": -30},
                 "is_game_over": True
             }
         }
@@ -332,17 +353,17 @@ CLASSES_DATA = {
                 "new_location": "Thessaloniki - Under-City Workshop",
                 "action_map": {
                     "Hotwire core into combat drone": {
-                        "stat": "TECH", "dc": 11,
+                        "stat": "TECH", "dc": 11, "faction": "underground",
                         "success": "tech_drone_win",
                         "fail": "tech_drone_fail"
                     },
                     "Rig door with scrap explosive": {
-                        "stat": "TECH", "dc": 13,
+                        "stat": "TECH", "dc": 13, "faction": "underground",
                         "success": "tech_trap_win",
                         "fail": "tech_trap_fail"
                     },
                     "Extract core and escape to Ladadika": {
-                        "stat": "TECH", "dc": 14,
+                        "stat": "TECH", "dc": 14, "faction": "underground",
                         "success": "tech_extract_win",
                         "fail": "tech_extract_fail"
                     }
@@ -352,18 +373,19 @@ CLASSES_DATA = {
             # --- STAGE 2: BRANCH A (COMBAT DRONE) ---
             "tech_drone_win": {
                 "narrative": "SUCCESS! The military drone boots up, hovering with twin autocannons active. It bursts through your workshop door and drives the syndicate forces out into Kamara plaza!",
+                "reputation_change": {"underground": -20, "law_enforcement": 10},
                 "new_items": ["Combat Drone Companion"],
                 "suggested_actions": ["Upgrade Drone into Mech Armor", "Deploy Drone to guard Aristotelous vendors", "Harness OTE Tower Power Grid"],
                 "new_location": "Thessaloniki - Rotunda Outer Ring",
                 "action_map": {
                     "Upgrade Drone into Mech Armor": {
-                        "stat": "TECH", "dc": 15,
+                        "stat": "TECH", "dc": 15, "faction": "corporates",
                         "success": "end_tech_titan",
                         "fail": "end_tech_overload"
                     },
                     "Deploy Drone to guard Aristotelous vendors": "end_tech_patron",
                     "Harness OTE Tower Power Grid": {
-                        "stat": "TECH", "dc": 14,
+                        "stat": "TECH", "dc": 14, "faction": "law_enforcement",
                         "success": "tech_ote_overcharge",
                         "fail": "end_tech_overload"
                     }
@@ -375,7 +397,7 @@ CLASSES_DATA = {
                 "suggested_actions": ["Rig door with scrap explosive"],
                 "action_map": {
                     "Rig door with scrap explosive": {
-                        "stat": "TECH", "dc": 13,
+                        "stat": "TECH", "dc": 13, "faction": "underground",
                         "success": "tech_trap_win",
                         "fail": "tech_trap_fail"
                     }
@@ -386,6 +408,7 @@ CLASSES_DATA = {
             "tech_trap_win": {
                 "narrative": "BOOM! The scrap explosive detonates as the gangers breach the door, disabling them instantly. In the wreckage, you recover a high-grade Militech hydraulic power frame.",
                 "eddies_change": 400,
+                "reputation_change": {"underground": -25, "corporates": 10},
                 "new_items": ["Hydraulic Power Frame"],
                 "suggested_actions": ["Sell frame at Ladadika Black Market", "Build custom Exo-Suit in Ano Poli"],
                 "action_map": {
@@ -396,6 +419,7 @@ CLASSES_DATA = {
             "tech_trap_fail": {
                 "narrative": "CHECK FAILED! The tripwire snaps prematurely! The syndicate breaches your workshop and loots your equipment.",
                 "hp_change": -30,
+                "reputation_change": {"underground": 15},
                 "lost_items": ["Toolkit"],
                 "is_game_over": True
             },
@@ -403,6 +427,7 @@ CLASSES_DATA = {
             # --- STAGE 2: BRANCH C (EXTRACT CORE) ---
             "tech_extract_win": {
                 "narrative": "CRITICAL EXTRACT! You carefully use your torch as a delicate scalpel, recovering an intact, pristine AI core before slipping out through the drainage pipes to Ladadika.",
+                "reputation_change": {"underground": 10},
                 "new_items": ["Pristine AI Core"],
                 "suggested_actions": ["Sell AI Core to Aristotelous bidder", "Build automated Helexpo factory"],
                 "action_map": {
@@ -420,6 +445,7 @@ CLASSES_DATA = {
             "tech_ote_overcharge": {
                 "narrative": "SUCCESS! You tap into the high-voltage relay of the OTE Tower, supercharging your drone mesh network across the whole metropolis.",
                 "eddies_change": 2000,
+                "reputation_change": {"law_enforcement": -20, "underground": 20},
                 "new_items": ["Overcharged Power Grid Interface"],
                 "suggested_actions": ["Monopolize City Energy Grid", "Establish Cyber-Tech Haven in Ano Poli"],
                 "new_location": "Thessaloniki - OTE Tower Summit",
@@ -433,21 +459,25 @@ CLASSES_DATA = {
             "end_tech_titan": {
                 "narrative": "MISSION COMPLETE: You construct a piloted Cyber-Mech! You become the unstoppable titan guarding the historic streets of Thessaloniki.",
                 "eddies_change": 2000,
+                "reputation_change": {"underground": 30, "law_enforcement": -10},
                 "is_game_over": True
             },
             "end_tech_patron": {
                 "narrative": "MISSION COMPLETE: Your autonomous drones protect Aristotelous Square and local street vendors. Grateful merchant guilds pool their funds to pay you a huge weekly retainer.",
                 "eddies_change": 3000,
+                "reputation_change": {"underground": 40},
                 "is_game_over": True
             },
             "end_tech_wealth": {
                 "narrative": "MISSION COMPLETE: High-tech black market bidders at Ladadika enter a price war for your loot. You net 7,000 Eddies and open a chain of ripperdoc tech clinics.",
                 "eddies_change": 7000,
+                "reputation_change": {"corporates": 20, "underground": 10},
                 "is_game_over": True
             },
             "end_tech_factory": {
                 "narrative": "MISSION COMPLETE: You construct an automated micro-factory in the abandoned Helexpo pavilions that mass-produces cyberware, making you the premier tech mogul of the city.",
                 "eddies_change": 10000,
+                "reputation_change": {"corporates": 40, "underground": -20},
                 "is_game_over": True
             },
             "end_tech_overload": {
