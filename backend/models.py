@@ -48,3 +48,14 @@ class GameResponse(BaseModel):
     is_game_over: bool = False
     roll: Optional[RollResult] = None
     updated_reputation: Dict[str, int] = {}
+
+class AIGameOutput(BaseModel):
+  narrative: str
+  hp_change: int = 0
+  eddies_change: int = 0
+  reputation_change: Dict[str, int] = {}
+  new_items: List[str] = []
+  lost_items: List[str] = []
+  suggested_actions: List[str]
+  new_location: Optional[str] = None
+  is_game_over: bool = False
