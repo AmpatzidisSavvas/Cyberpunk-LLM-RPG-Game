@@ -29,7 +29,7 @@ export default function ActionButtons({ suggestedActions, handleAction, loading 
           disabled={loading}
           className="group relative text-left text-xs p-3 rounded-lg bg-[#00f3ff]/5 hover:bg-[#00f3ff]/20 border border-[#00f3ff]/30 text-[#00f3ff] transition-all hover:border-[#00f3ff] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-between"
         >
-          <span className="font-mono truncate pr-2">&gt; {choice}</span>
+          <span className="font-mono pr-2">&gt; {choice}</span>
           <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#00f3ff]/20 border border-[#00f3ff]/40 text-[#00f3ff] group-hover:bg-[#00f3ff] group-hover:text-black font-bold transition">
             [{i + 1}]
           </span>

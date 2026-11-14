@@ -45,7 +45,7 @@ export default function DiceModal({
             {animatedRollValue}
           </span>
         </div>
-        <div className="text-[10px] text-gray-400 mb-4">
+        <div className="text-[12px] text-gray-400 mb-6 mt-6">
           (Boost: <span className="text-[#00ff9f]">+{rollData.modifier}</span>)
         </div>
 
