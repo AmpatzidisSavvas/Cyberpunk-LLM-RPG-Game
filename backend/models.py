@@ -14,7 +14,7 @@ class PlayerState(BaseModel):
         "COMBAT": 0,
         "TECH": 0
     }
-    # Faction standings: ranges from -100 (Hostile) to +100 (Allied)
+    
     reputation: Dict[str, int] = {
         "corporates": 0,
         "underground": 0,

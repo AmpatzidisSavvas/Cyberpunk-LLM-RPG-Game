@@ -24,11 +24,7 @@ export default function GameplayScreen({
   handleCloseDiceModal
 }) {
   // Helper to format faction scores with color coding (-100 to +100)
-  const getRepColor = (score) => {
-    if (score > 20) return "text-[#00ff9f] drop-shadow-[0_0_5px_rgba(0,255,159,0.5)]";
-    if (score < -20) return "text-[#ff0055] drop-shadow-[0_0_5px_rgba(255,0,85,0.5)]";
-    return "text-[#00f3ff]/70";
-  };
+  
 
   return (
     <div className="relative min-h-screen bg-[#080811] text-[#00ff9f] p-4 md:p-8 flex flex-col font-mono selection:bg-[#ff0055] selection:text-white">

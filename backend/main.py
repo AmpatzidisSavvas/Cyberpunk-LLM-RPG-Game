@@ -37,25 +37,30 @@ async def get_classes():
 
 @app.post("/api/start")
 async def start_game(player_state: PlayerState):
-    role = player_state.role
-    class_info = CLASSES_DATA.get(role, CLASSES_DATA["Netrunner"])
-    start_key = class_info.get("start_scenario", "net_start")
+  role = player_state.role
+  class_info = CLASSES_DATA.get(role, CLASSES_DATA["Netrunner"])
+  start_key = class_info.get("start_scenario", "net_start")
+  starting_reputation = class_info.get(
+      "reputation",
+      {"corporates": 0, "underground": 0, "law_enforcement": 0},
+  ).copy()
 
-    # Grab the hardcoded opening scenario to ensure instant, zero-lag game start
-    scenario = class_info["scenarios"][start_key].copy()
-    CURRENT_SESSIONS[player_state.name] = {
-        "stage": 1,
-        "scenario_key": start_key,
-        "last_narrative": scenario["narrative"],
-        "location": class_info["location"],
-        "origin_theme": class_info.get("origin_theme", ""),
-        "used_options": set(scenario.get("suggested_actions", [])),
-    }
+  # Grab the hardcoded opening scenario to ensure instant, zero-lag game start
+  scenario = class_info["scenarios"][start_key].copy()
+  CURRENT_SESSIONS[player_state.name] = {
+      "stage": 1,
+      "scenario_key": start_key,
+      "last_narrative": scenario["narrative"],
+      "location": class_info["location"],
+      "origin_theme": class_info.get("origin_theme", ""),
+      "used_options": set(scenario.get("suggested_actions", [])),
+  }
 
-    return {
-        "system_log": f"OPERATIVE LOGGED IN: [CLASS: {role.upper()}]",
-        "story": scenario,
-    }
+  return {
+      "system_log": f"OPERATIVE LOGGED IN: [CLASS: {role.upper()}]",
+      "reputation": starting_reputation,
+      "story": scenario,
+  }
 
 
 @app.post("/api/action", response_model=GameResponse)
