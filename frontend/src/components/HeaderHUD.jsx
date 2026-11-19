@@ -1,15 +1,13 @@
 import React from 'react';
-import { Terminal, Shield, Zap, DollarSign, MapPin, Cpu, Sliders } from 'lucide-react';
+import { Terminal, Shield, Zap, DollarSign, MapPin,  } from 'lucide-react';
 
-export default function HeaderHUD({ player, crtEnabled, setCrtEnabled, useMock, setUseMock }) {
+export default function HeaderHUD({ player }) {
   const hpPercent = Math.max(0, Math.min(100, (player.hp / player.max_hp) * 100));
 
   return (
-    <header className="z-20 mb-6 border-b border-[#00f3ff]/30 pb-4 flex flex-wrap justify-between items-center gap-4 bg-[#0d0f1d]/60 backdrop-blur-md p-4 rounded-xl border border-[#00f3ff]/20">
+    <header className="z-20 mb-2 border-b border-b-[#00f3ff]/30 pb-4 flex flex-wrap justify-between items-center gap-4 bg-[#0d0f1d]/60 backdrop-blur-md p-4 rounded-xl border border-[#00f3ff]/20">
       <div>
-        <h1 className="text-2xl md:text-3xl font-black tracking-widest text-[#ff0055] drop-shadow-[0_0_10px_rgba(255,0,85,0.7)] flex items-center gap-2 uppercase">
-          <Terminal className="animate-pulse text-[#00f3ff]" /> THESSALONIKI_2099_STORIES
-        </h1>
+        
         <p className="text-xs text-[#00f3ff]/80 flex items-center gap-1 mt-1 font-mono tracking-wider">
           <MapPin size={12} className="text-[#ff0055]" /> {player.location}
         </p>
