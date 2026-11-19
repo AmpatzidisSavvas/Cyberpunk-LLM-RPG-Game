@@ -5,6 +5,7 @@ import ActionButtons from './ActionButtons';
 import OperativeSidebar from './OperativeSidebar';
 import DiceModal from './DiceModal';
 import MatrixBackground from './MatrixBackground';
+import FactionReputationWidget from './FactionReputationWidget';
 
 export default function GameplayScreen({
   player,
@@ -90,37 +91,8 @@ export default function GameplayScreen({
           />
 
           {/* Faction Reputation Widget */}
-          {player && player.reputation && (
-            <div className="border border-[#00f3ff]/20 bg-[#0d0f1d]/90 rounded-xl p-4 shadow-[0_0_15px_rgba(0,243,255,0.05)]">
-              <h3 className="text-xs uppercase tracking-widest text-[#00f3ff] mb-3 border-b border-[#00f3ff]/20 pb-1 flex justify-between items-center">
-                <span>[FACTION STANDINGS]</span>
-                <span className="text-[10px] text-gray-400">[-100 / +100]</span>
-              </h3>
-              
-              <div className="space-y-3 text-xs">
-                {Object.entries(player.reputation).map(([faction, score]) => (
-                  <div key={faction} className="flex flex-col">
-                    <div className="flex justify-between uppercase tracking-wider mb-1">
-                      <span className="text-gray-300">{faction}</span>
-                      <span className={`font-bold ${getRepColor(score)}`}>
-                        {score > 0 ? `+${score}` : score}
-                      </span>
-                    </div>
-                    {/* Progress Bar representation */}
-                    <div className="w-full bg-black/60 h-1.5 rounded-full overflow-hidden border border-[#00f3ff]/10">
-                      <div 
-                        className={`h-full transition-all duration-500 ${score >= 0 ? 'bg-[#00ff9f]' : 'bg-[#ff0055]'}`}
-                        style={{ 
-                          width: `${Math.min(100, Math.abs(score))}%`, 
-                          marginLeft: score < 0 ? `${50 - Math.abs(score)/2}%` : '50%'
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <FactionReputationWidget reputation={player?.reputation} />
+          
         </div>
       </div>
     </div>
