@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeaderHUD from './HeaderHUD';
 import TerminalLog from './TerminalLog';
 import ActionButtons from './ActionButtons';
@@ -6,6 +6,7 @@ import OperativeSidebar from './OperativeSidebar';
 import DiceModal from './DiceModal';
 import MatrixBackground from './MatrixBackground';
 import FactionReputationWidget from './FactionReputationWidget';
+import { resolveNodeId } from './StorylineMapPanel';
 
 export default function GameplayScreen({
   player,
@@ -21,18 +22,31 @@ export default function GameplayScreen({
   rollData,
   rollFinished,
   animatedRollValue,
-  handleCloseDiceModal
+  handleCloseDiceModal,
 }) {
-  // Helper to format faction scores with color coding (-100 to +100)
-  
+  const [visitedTrail, setVisitedTrail] = useState([]);
+
+  useEffect(() => {
+    if (!player?.role || !player?.location) return;
+    const nodeId = resolveNodeId(player.current_node_id, player.location);
+
+    setVisitedTrail((prev) => {
+      if (prev.length === 0 || prev[0]?.role !== player.role) {
+        return [{ role: player.role, nodeId, location: player.location }];
+      }
+      const last = prev[prev.length - 1];
+      if (last.location === player.location && last.nodeId === nodeId) {
+        return prev;
+      }
+      return [...prev, { role: player.role, nodeId, location: player.location }];
+    });
+  }, [player?.role, player?.location, player?.current_node_id]);
 
   return (
     <div className="relative min-h-screen bg-[#080811] text-[#00ff9f] p-4 md:p-8 flex flex-col font-mono selection:bg-[#ff0055] selection:text-white">
-      
       <MatrixBackground />
-      
-      {/* Dice Roll Modal (Displays d20 roll, modifiers, and effective DC) */}
-      <DiceModal 
+
+      <DiceModal
         rolling={rolling}
         rollData={rollData}
         rollFinished={rollFinished}
@@ -40,27 +54,23 @@ export default function GameplayScreen({
         onClose={handleCloseDiceModal}
       />
 
-      {/* Header HUD */}
-      {player && (
-        <HeaderHUD 
-          player={player} 
-          crtEnabled={crtEnabled} 
-          setCrtEnabled={setCrtEnabled} 
+      {/* {player && (
+        <HeaderHUD
+          player={player}
+          crtEnabled={crtEnabled}
+          setCrtEnabled={setCrtEnabled}
         />
-      )}
+      )} */}
 
-      {/* Main Gameplay Layout */}
       <div className="z-20 flex-1 grid grid-cols-1 lg:grid-cols-4 gap-6 mt-4">
-        
-        {/* Left / Center: Console & Terminal Section */}
         <div className="lg:col-span-3 flex flex-col border border-[#00f3ff]/30 bg-[#0d0f1d]/80 rounded-xl p-4 h-[640px] shadow-[0_0_25px_rgba(0,243,255,0.08)]">
           <TerminalLog logs={logs} loading={loading} crtEnabled={crtEnabled} />
-          
+
           {!isGameOver ? (
-            <ActionButtons 
-              suggestedActions={suggestedActions} 
-              handleAction={handleAction} 
-              loading={loading} 
+            <ActionButtons
+              suggestedActions={suggestedActions}
+              handleAction={handleAction}
+              loading={loading}
             />
           ) : (
             <div className="p-4 border border-[#00ff9f]/40 bg-[#00ff9f]/10 rounded-lg text-center mt-auto my-2">
@@ -77,18 +87,14 @@ export default function GameplayScreen({
           )}
         </div>
 
-        {/* Right Sidebar: Character Data & Faction Standings */}
         <div className="flex flex-col gap-6">
-          
-          {/* Character Inventory & Profile Sidebar */}
-          <OperativeSidebar 
-            player={player} 
-            onSwitchClass={onSwitchClass} 
+          <OperativeSidebar
+            player={player}
+            onSwitchClass={onSwitchClass}
+            visitedTrail={visitedTrail}
           />
 
-          {/* Faction Reputation Widget */}
           <FactionReputationWidget reputation={player?.reputation} />
-          
         </div>
       </div>
     </div>

@@ -4,7 +4,23 @@ CLASSES_DATA = {
         "hp": 90,
         "max_hp": 90,
         "eddies": 400,
-        "inventory": ["Cyberdeck v2", "ICE-Breaker", "Encrypted Ghost-Chip"],
+        "current_node_id": "pier6",
+        "story_pins": [
+            {
+                "node_id": "pier6",
+                "title": "Aegean Fiber Trunk",
+                "objective": "Intercept the ghost-freighter's neural cargo before Arasaka traces your deck.",
+                "action_text": "Siphon the neural cargo manifest",
+                "status": "active",
+            },
+            {
+                "node_id": "ladadika",
+                "title": "KASSANDRA Signal",
+                "objective": "Encrypted harbor routing points toward Ladadika's shadow-nets.",
+                "action_text": "Infiltrate Ladadika's neon backstreets to trace the signal",
+                "status": "active",
+            },
+        ],
         "location": "Thessaloniki - Pier 6 Maritime Data Hub",
         "stats": {"HACKING": 5, "COMBAT": 1, "TECH": 2},
         "reputation": {"corporates": -10, "underground": 15, "law_enforcement": 0},
@@ -17,55 +33,91 @@ CLASSES_DATA = {
                 "suggested_actions": [
                     "Siphon the neural cargo manifest",
                     "Spoof harbor customs beacon to misdirect Arasaka",
-                    "Deploy black-ICE trap on the freighter's bridge"
+                    "Deploy black-ICE trap on the freighter's bridge",
                 ],
+                "current_node_id": "pier6",
                 "new_location": "Thessaloniki - Aegean Sub-Cable Node",
                 "action_map": {
                     "Siphon the neural cargo manifest": {
-                        "stat": "HACKING", "dc": 12, "faction": "corporates",
+                        "stat": "HACKING",
+                        "dc": 12,
+                        "faction": "corporates",
                         "success": "net_stage2_win",
-                        "fail": "net_stage2_fail"
+                        "fail": "net_stage2_fail",
                     },
                     "Spoof harbor customs beacon to misdirect Arasaka": {
-                        "stat": "HACKING", "dc": 13, "faction": "law_enforcement",
+                        "stat": "HACKING",
+                        "dc": 13,
+                        "faction": "law_enforcement",
                         "success": "net_stage2_win",
-                        "fail": "net_stage2_fail"
+                        "fail": "net_stage2_fail",
                     },
-                    "Deploy black-ICE trap on the freighter's bridge": "net_stage2_win"
-                }
+                    "Deploy black-ICE trap on the freighter's bridge": "net_stage2_win",
+                },
             },
             "net_stage2_win": {
                 "narrative": "Your code slips cleanly past the harbor firewalls. You decrypt the manifest: a rogue AI shard named 'KASSANDRA' is being smuggled toward Ladadika—and Arasaka hit-teams are already mobilizing to intercept it.",
                 "eddies_change": 200,
                 "reputation_change": {"corporates": -15, "underground": 10},
-                "new_items": ["Kassandra Routing Key"],
+                "current_node_id": "ladadika",
                 "new_location": "Thessaloniki - Ladadika Perimeter",
+                "resolved_node_id": "pier6",
+                "new_pin": {
+                    "node_id": "white_tower",
+                    "title": "NetWatch Relay Spire",
+                    "objective": "A NetWatch monitoring beacon near the White Tower is triangulating KASSANDRA's frequency.",
+                    "action_text": "Infiltrate the White Tower NetWatch relay to scrub your trace",
+                    "status": "active",
+                },
                 "suggested_actions": [
                     "Track the smuggler convoy into Ladadika",
                     "Auction the Routing Key on the underground shadow-net",
-                    "Infiltrate the local NetWatch relay to scrub your trace"
-                ]
+                    "Infiltrate the local NetWatch relay to scrub your trace",
+                ],
             },
             "net_stage2_fail": {
                 "narrative": "Arasaka's harbor Black ICE snaps back like a whip, scorching your neural buffer (-20 HP) before you rip the cable free. You flee Pier 6 into the rain-slicked alleys of Ladadika with Arasaka drones scanning the rooftops.",
                 "hp_change": -20,
                 "reputation_change": {"corporates": -20},
+                "current_node_id": "ladadika",
                 "new_location": "Thessaloniki - Ladadika Backstreets",
+                "new_pin": {
+                    "node_id": "westside",
+                    "title": "Westside Chop-Shop",
+                    "objective": "An underground deck-smith in Westside can purge Arasaka's trace signature.",
+                    "action_text": "Slip into Westside to have a ripper-tech purge your deck",
+                    "status": "escalated",
+                },
                 "suggested_actions": [
                     "Hide inside a neon-lit cyber-cafe to patch your deck",
                     "Ambush a lone Arasaka recon drone for parts",
-                    "Contact a local street fixer for safe passage"
-                ]
-            }
-        }
+                    "Contact a local street fixer for safe passage",
+                ],
+            },
+        },
     },
-
     "Gunner": {
         "description": "A battle-hardened street mercenary forged in the vertical gang wars of Ano Poli.",
         "hp": 130,
         "max_hp": 130,
         "eddies": 250,
-        "inventory": ["Smart-Pistol", "Mono-Edge Knife", "Kevlar Trench"],
+        "current_node_id": "ano_poli",
+        "story_pins": [
+            {
+                "node_id": "ano_poli",
+                "title": "Heptapyrgion Siege",
+                "objective": "Hold the ancient ramparts against Militech drop-teams.",
+                "action_text": "Suppress the breach-team with Smart-Pistol fire",
+                "status": "active",
+            },
+            {
+                "node_id": "aristotelous",
+                "title": "Aristotelous Dead-Drop",
+                "objective": "Vardar Syndicate extraction point waiting down at the main plaza.",
+                "action_text": "Push down toward Aristotelous Plaza",
+                "status": "active",
+            },
+        ],
         "location": "Thessaloniki - Ano Poli Heptapyrgion Ramparts",
         "stats": {"HACKING": 1, "COMBAT": 5, "TECH": 2},
         "reputation": {"corporates": 0, "underground": 20, "law_enforcement": -15},
@@ -78,66 +130,111 @@ CLASSES_DATA = {
                 "suggested_actions": [
                     "Suppress the breach-team with Smart-Pistol fire",
                     "Drop smoke and flank through the Byzantine watchtower",
-                    "Use the lieutenant as leverage to parley with Militech"
+                    "Use the lieutenant as leverage to parley with Militech",
                 ],
+                "current_node_id": "ano_poli",
                 "new_location": "Thessaloniki - Heptapyrgion Siege Zone",
                 "action_map": {
                     "Suppress the breach-team with Smart-Pistol fire": {
-                        "stat": "COMBAT", "dc": 11, "faction": "corporates",
+                        "stat": "COMBAT",
+                        "dc": 11,
+                        "faction": "corporates",
                         "success": "solo_stage2_win",
-                        "fail": "solo_stage2_fail"
+                        "fail": "solo_stage2_fail",
                     },
                     "Drop smoke and flank through the Byzantine watchtower": {
-                        "stat": "COMBAT", "dc": 13, "faction": "underground",
+                        "stat": "COMBAT",
+                        "dc": 13,
+                        "faction": "underground",
                         "success": "solo_stage2_win",
-                        "fail": "solo_stage2_fail"
+                        "fail": "solo_stage2_fail",
                     },
-                    "Use the lieutenant as leverage to parley with Militech": "solo_stage2_betray"
-                }
+                    "Use the lieutenant as leverage to parley with Militech": "solo_stage2_betray",
+                },
             },
             "solo_stage2_win": {
                 "narrative": "Your smart-rounds tear through the Militech vanguard, forcing their skiff to peel off into the storm. The grateful Vardar lieutenant hands you an encrypted briefcase bound for Aristotelous Plaza before passing out.",
                 "eddies_change": 300,
                 "reputation_change": {"underground": 15, "corporates": -15},
-                "new_items": ["Vardar Encrypted Briefcase"],
+                "current_node_id": "aristotelous",
                 "new_location": "Thessaloniki - Ano Poli Descent",
+                "resolved_node_id": "ano_poli",
+                "new_pin": {
+                    "node_id": "aristotelous",
+                    "title": "Encrypted Briefcase Drop",
+                    "objective": "Deliver—or crack open—the Vardar payload at Aristotelous Plaza.",
+                    "action_text": "Descend toward Aristotelous Plaza to deliver the briefcase",
+                    "status": "active",
+                },
                 "suggested_actions": [
                     "Descend toward Aristotelous Plaza to deliver the briefcase",
                     "Crack open the briefcase to inspect the payload",
-                    "Loot the fallen Militech troopers for heavy gear"
-                ]
+                    "Loot the fallen Militech troopers for heavy gear",
+                ],
             },
             "solo_stage2_fail": {
                 "narrative": "Suppressive fire pins you behind crumbling stone, and a stray plasma bolt grazes your shoulder (-25 HP). The Vardar lieutenant is captured, leaving you wounded and hunted across the upper city walls.",
                 "hp_change": -25,
                 "reputation_change": {"underground": -15},
+                "current_node_id": "ano_poli",
                 "new_location": "Thessaloniki - Ano Poli Slums",
+                "new_pin": {
+                    "node_id": "westside",
+                    "title": "Westside Bunker",
+                    "objective": "Vardar enforcers in Westside are mobilizing—get patching or get ahead of the blame.",
+                    "action_text": "Head into Westside to find an underground ripperdoc",
+                    "status": "escalated",
+                },
                 "suggested_actions": [
                     "Track the Militech extraction convoy down the hill",
                     "Find an underground ripperdoc in the slums",
-                    "Set an ambush along the narrow cobblestone stairs"
-                ]
+                    "Set an ambush along the narrow cobblestone stairs",
+                ],
             },
             "solo_stage2_betray": {
                 "narrative": "You lower your weapon and hand over the syndicate lieutenant. Militech transfers a fat cred-chip to your account, though word of your betrayal spreads instantly across Thessaloniki's underworld.",
                 "eddies_change": 600,
                 "reputation_change": {"corporates": 25, "underground": -35},
+                "current_node_id": "aristotelous",
                 "new_location": "Thessaloniki - Corporate Checkpoint",
+                "resolved_node_id": "ano_poli",
+                "new_pin": {
+                    "node_id": "eastside",
+                    "title": "Eastside Safehouse",
+                    "objective": "Lay low in Eastside's industrial sprawl while Vardar hit-teams sweep the center.",
+                    "action_text": "Slip out to Eastside to lay low until the heat cools",
+                    "status": "escalated",
+                },
                 "suggested_actions": [
                     "Take a Militech corporate contract in Aristotelous Plaza",
                     "Lay low in a neutral bar near the waterfront",
-                    "Use your new eddies to upgrade your combat cyberware"
-                ]
-            }
-        }
+                    "Use your new eddies to upgrade your combat cyberware",
+                ],
+            },
+        },
     },
-
     "Techie": {
         "description": "An underground cyber-archaeologist salvaging pre-collapse tech from the flooded metro ruins.",
         "hp": 100,
         "max_hp": 100,
         "eddies": 300,
-        "inventory": ["Arc-Welder", "Salvage Scanner", "Magnetic Grapple"],
+        "current_node_id": "venizelou",
+        "story_pins": [
+            {
+                "node_id": "venizelou",
+                "title": "Sub-Egnatia Fusion Core",
+                "objective": "Extract the humming pre-collapse power cell beneath Venizelou.",
+                "action_text": "Rig a magnetic grapple to yank the fusion cell free",
+                "status": "active",
+            },
+            {
+                "node_id": "rotunda",
+                "title": "Rotunda Salvage Exchange",
+                "objective": "Underground buyers and ancient catacomb access await at the Rotunda.",
+                "action_text": "Ascend into the Rotunda market to find a buyer",
+                "status": "active",
+            },
+        ],
         "location": "Thessaloniki - Venizelou Deep Metro Ruins",
         "stats": {"HACKING": 2, "COMBAT": 1, "TECH": 5},
         "reputation": {"corporates": 0, "underground": 10, "law_enforcement": 5},
@@ -150,45 +247,66 @@ CLASSES_DATA = {
                 "suggested_actions": [
                     "Overload the excavation spiders with your Arc-Welder",
                     "Rig a magnetic grapple to yank the fusion cell free",
-                    "Re-route the tunnel's dormant floodgates to trap the machines"
+                    "Re-route the tunnel's dormant floodgates to trap the machines",
                 ],
+                "current_node_id": "venizelou",
                 "new_location": "Thessaloniki - Subterranean Roman Vaults",
                 "action_map": {
                     "Overload the excavation spiders with your Arc-Welder": {
-                        "stat": "TECH", "dc": 12, "faction": "underground",
+                        "stat": "TECH",
+                        "dc": 12,
+                        "faction": "underground",
                         "success": "tech_stage2_win",
-                        "fail": "tech_stage2_fail"
+                        "fail": "tech_stage2_fail",
                     },
                     "Rig a magnetic grapple to yank the fusion cell free": {
-                        "stat": "TECH", "dc": 13, "faction": "corporates",
+                        "stat": "TECH",
+                        "dc": 13,
+                        "faction": "corporates",
                         "success": "tech_stage2_win",
-                        "fail": "tech_stage2_fail"
+                        "fail": "tech_stage2_fail",
                     },
-                    "Re-route the tunnel's dormant floodgates to trap the machines": "tech_stage2_win"
-                }
+                    "Re-route the tunnel's dormant floodgates to trap the machines": "tech_stage2_win",
+                },
             },
             "tech_stage2_win": {
                 "narrative": "Sparks shower the flooded tracks as the ancient machines short out. You pry loose the unstable pre-collapse Fusion Cell—a relic worth a fortune to either corporate labs or the underground resistance.",
                 "eddies_change": 150,
                 "reputation_change": {"underground": 10},
-                "new_items": ["Pre-Collapse Fusion Cell"],
+                "current_node_id": "rotunda",
                 "new_location": "Thessaloniki - Rotunda Sub-Basement",
+                "resolved_node_id": "venizelou",
+                "new_pin": {
+                    "node_id": "eastside",
+                    "title": "Eastside Scrap-Yard Reactor",
+                    "objective": "An Eastside generator rig can stabilize or weaponize the pre-collapse cell.",
+                    "action_text": "Transport the Fusion Cell to an Eastside workshop",
+                    "status": "active",
+                },
                 "suggested_actions": [
                     "Ascend into the Rotunda market to find a buyer",
                     "Modify your Arc-Welder using the Fusion Cell's energy",
-                    "Explore deeper into the sealed Byzantine catacombs"
-                ]
+                    "Explore deeper into the sealed Byzantine catacombs",
+                ],
             },
             "tech_stage2_fail": {
                 "narrative": "The fusion housing vents superheated steam, blistering your arms (-20 HP) as the tunnel ceiling begins to cave in. You scramble up a maintenance ladder into the neon glare of Egnatia Street empty-handed.",
                 "hp_change": -20,
+                "current_node_id": "venizelou",
                 "new_location": "Thessaloniki - Egnatia Neon Strip",
+                "new_pin": {
+                    "node_id": "white_tower",
+                    "title": "Waterfront Intake Shaft",
+                    "objective": "An alternate maintenance hatch near the White Tower leads back into the flooded vaults.",
+                    "action_text": "Check the waterfront drainage shaft near the White Tower",
+                    "status": "escalated",
+                },
                 "suggested_actions": [
                     "Salvage scrap parts from a wrecked transit drone",
                     "Visit a Rotunda workshop to treat your burns",
-                    "Check local fixer boards for a quick repair job"
-                ]
-            }
-        }
-    }
+                    "Check local fixer boards for a quick repair job",
+                ],
+            },
+        },
+    },
 }
