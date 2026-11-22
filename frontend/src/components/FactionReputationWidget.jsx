@@ -5,8 +5,8 @@ const FactionReputationWidget = ({ reputation }) => {
 
   const getStandingTier = (score) => {
     if (score >= 80) return { label: 'EXALTED', color: 'text-[#00ff9f]', glow: 'shadow-[0_0_8px_#00ff9f]' };
-    if (score >= 40) return { label: 'TRUSTED', color: 'text-[#00f3ff]', glow: 'shadow-[0_0_8px_#00f3ff]' };
-    if (score > -40) return { label: 'NEUTRAL', color: 'text-gray-400', glow: '' };
+    if (score >= 20) return { label: 'TRUSTED', color: 'text-[#00f3ff]', glow: 'shadow-[0_0_8px_#00f3ff]' };
+    if (score > -5) return { label: 'NEUTRAL', color: 'text-gray-400', glow: '' };
     if (score > -80) return { label: 'HOSTILE', color: 'text-[#ffaa00]', glow: 'shadow-[0_0_8px_#ffaa00]' };
     return { label: 'HUNTED', color: 'text-[#ff0055]', glow: 'shadow-[0_0_8px_#ff0055]' };
   };

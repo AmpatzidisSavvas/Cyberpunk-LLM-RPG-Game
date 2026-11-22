@@ -1,6 +1,6 @@
 import React from 'react';
 import StorylineMapPanel from './StorylineMapPanel';
-import { Terminal, Shield, Zap, DollarSign, MapPin,  } from 'lucide-react';
+import {  Shield, Zap, DollarSign, MapPin,  } from 'lucide-react';
 
 export default function OperativeSidebar({
   player,
@@ -101,6 +101,7 @@ export default function OperativeSidebar({
         player={player}
         visitedTrail={visitedTrail}
       />
+      
     </div>
   );
 }
